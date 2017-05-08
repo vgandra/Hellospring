@@ -26,7 +26,9 @@ node {
 		input message: 'deploy?', submitter: 'ops'
 	}
 	
-	stage name:'deploy', concurrency: 1{
+	stage name:'deploy', concurrency: 1 node{
+			{
 				bat "mvn cargo:deploy" 
 			}
+		}	
 }
