@@ -3,26 +3,26 @@ node {
 	env.PATH ="${tool 'Maven3'}/bin:${env.PATH}"
 	stash excludes: 'target/', includes: '**', name: 'source'
 	stage('validate') {
-		sh 'mvn validate'
+		bat 'mvn validate'
 	} 
 	stage('compile') {
-		sh 'mvn compile'
+		bat 'mvn compile'
 	} 
 	stage('package') {
-		 sh 'mvn clean package -DskipTests'
+		 bat 'mvn clean package -DskipTests'
 	}
 	stage('install') {
-		sh 'mvn clean install'
+		bat 'mvn clean install'
 	} 
 	stage('test') {
 		parallel 'integration': {
-			sh 'mvn clean verify'
+			bat 'mvn clean verify'
 		}, 'quality': {
-			//sh 'mvn sonar:sonar'
+			bat 'mvn sonar:sonar'
 			} 
 	} 
 	stage('deploy') {
 		unstash 'source'
-		sh 'cp target/*.jar /opt/deploy'
+		bat 'copy .\target\*.jar d:\deploy'
 	}
 }
