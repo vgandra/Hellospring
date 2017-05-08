@@ -27,7 +27,9 @@ node {
 	}
 	
 	stage name:'deploy', concurrency: 1
-		{
-			bat "mvn cargo:deploy" 
-		}	
+	node{
+			{
+				bat "mvn cargo:deploy" 
+			}
+		}		
 }
