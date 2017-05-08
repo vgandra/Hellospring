@@ -1,6 +1,7 @@
 node {
   checkout scm
   env.PATH = "${tool 'Maven3'}/bin:${env.PATH}"
+  stash 'working-copy'
   
   stage('Validate') {
        bat 'mvn validate'
@@ -30,8 +31,10 @@ node {
 	//	input message: 'Do you want to deploy?', submitter: 'ops'
 	//}	
 	
-	stage name:'deploy', concurrency: 1{ 
+	stage name:'deploy', concurrency: 1
+	node ('deploynode') { 
 	//			bat "mvn cargo:deploy" 
+				 unstash 'working-copy'
 				bat "copy .\\target\\*.jar d:\\deploy"
 	}	
 }
