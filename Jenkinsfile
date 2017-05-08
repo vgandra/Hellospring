@@ -23,7 +23,7 @@ node {
 	
 	stage ('approve')
 	timeout(time: 7, unit: 'DAYS') {
-		input message: 'Do you want to deploy?', submitter: 'ops'
+		input message: 'deploy?', submitter: 'ops'
 	}
 	
 	stage name:'deploy', concurrency: 1{
