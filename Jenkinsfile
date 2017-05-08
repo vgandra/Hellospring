@@ -33,6 +33,6 @@ node {
 	stage name:'deploy', concurrency: 1
 	node { 
 	//			bat "mvn cargo:deploy" 
-				bat "copy \\target\\*.jar d:\\deploy"
+				bat "copy C:\\Users\\Jeyashree\\HelloSpringWorld\\target\\*.jar d:\\deploy"
 	}	
 }
