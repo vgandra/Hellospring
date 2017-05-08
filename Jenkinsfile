@@ -23,6 +23,6 @@ node {
 	} 
 	stage('deploy') {
 		unstash 'source'
-		bat 'copy .\\target\\*.jar d:\\deploy'
+		bat 'copy .\\target\*.jar d:\\deploy'
 	}
 }
