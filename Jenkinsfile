@@ -18,7 +18,7 @@ node {
 		parallel 'integration': {
 			bat 'mvn clean verify'
 		}, 'quality': {
-			bat 'mvn sonar:sonar'
+			//bat 'mvn sonar:sonar'
 			} 
 	} 
 	stage('deploy') {
