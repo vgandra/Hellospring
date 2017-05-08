@@ -14,14 +14,10 @@ node {
     }
 	
   stage ('test'){
-	parallel 'integration': {
-	
-		bat "mvn clean verify" 
-				
+	parallel 'integration': {	
+		bat "mvn clean verify" 			
 	}, 'quality': {
-	
-		bat "mvn sonar:sonar" 
-			
+		bat "mvn sonar:sonar" 		
 	}
 	}
 	
@@ -30,7 +26,7 @@ node {
 		input message: 'Do you want to deploy?', submitter: 'ops'
 	}
 	
-	stage name: ('deploy'), concurrency: 1
+	stage name:'deploy', concurrency: 1
 		{
 			bat "mvn cargo:deploy" 
 		}	
