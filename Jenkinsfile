@@ -31,7 +31,9 @@ node {
 	}
 	
 	stage name:('deploy'), concurrency: 1
+	node {
 		{
 			bat "mvn cargo:deploy" 
 		}	
+	}	
 }
