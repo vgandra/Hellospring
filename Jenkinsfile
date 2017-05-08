@@ -13,15 +13,16 @@ node {
        bat 'mvn clean package -DskipTests'
     }
 	
-  stage ('test')
+  stage ('test'){
 	parallel 'integration': {
-	{
+	
 		bat "mvn clean verify" 
-			}	
+				
 	}, 'quality': {
-	{
+	
 		bat "mvn sonar:sonar" 
-			}
+			
+	}
 	}
 	
 	stage ('approve')
