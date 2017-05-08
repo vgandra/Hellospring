@@ -13,6 +13,10 @@ node {
        bat 'mvn clean package -DskipTests'
     }
 	
+  stage('Install') {
+       bat 'mvn clean install'
+    }	
+	
   stage ('test'){
 	parallel 'integration': {	
 		bat "mvn clean verify" 			
@@ -29,6 +33,6 @@ node {
 	stage name:'deploy', concurrency: 1
 	node { 
 	//			bat "mvn cargo:deploy" 
-				bat "copy target/*.jar d:/deploy"
+				bat "copy .\target\*.jar d:\deploy"
 	}	
 }
