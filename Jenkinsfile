@@ -31,8 +31,7 @@ node {
 	//	input message: 'Do you want to deploy?', submitter: 'ops'
 	//}	
 	
-	stage ('deploy'), concurrency: 1
-	node { 
+	stage ('deploy'){ 
 	//			bat "mvn cargo:deploy" 
 				 unstash 'source'
 				bat "copy .\\target\\*.jar d:\\deploy"
