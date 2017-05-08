@@ -20,9 +20,9 @@ node {
 	
   stage ('test'){
 	parallel 'integration': {	
-		bat "mvn clean verify" 			
+		bat 'mvn clean verify' 			
 	}, 'quality': {
-	//	bat "mvn sonar:sonar" 		
+	//	bat 'mvn sonar:sonar' 		
 	}
 	}
 	
@@ -32,8 +32,8 @@ node {
 	//}	
 	
 	stage ('deploy'){ 
-	//			bat "mvn cargo:deploy" 
+	//			bat 'mvn cargo:deploy' 
 				 unstash 'source'
-				bat "copy .\\target\\*.jar d:\\deploy"
+				bat 'copy .\\target\\*.jar d:\\deploy'
 	}	
 }
