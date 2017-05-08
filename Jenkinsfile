@@ -3,18 +3,18 @@ node {
   env.PATH = "${tool 'Maven3'}/bin:${env.PATH}"
   stash excludes: 'target/', includes: '**', name: 'source'
   
-  stage('Validate') {
+  stage('validate') {
        bat 'mvn validate'
     }
 	
-  stage('Compile') {
+  stage('compile') {
        bat 'mvn compile'
     }	
-  stage('Package') {
+  stage('package') {
        bat 'mvn clean package -DskipTests'
     }
 	
-  stage('Install') {
+  stage('install') {
        bat 'mvn clean install'
     }	
 	
