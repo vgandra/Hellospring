@@ -12,7 +12,7 @@ node {
 		 sh 'mvn clean package -DskipTests'
 	}
 	stage('install') {
-		sh 'mvn clean install
+		sh 'mvn clean install'
 	} 
 	stage('test') {
 		parallel 'integration': {
