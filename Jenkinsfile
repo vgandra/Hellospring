@@ -21,10 +21,10 @@ node {
 	}
 	}
 	
-	stage ('approve')
-	timeout(time: 30, unit: 'SECONDS') {
-		input message: 'deploy?', submitter: 'ops'
-	}
+	//stage ('approve')
+	//timeout(time: 7, unit: 'DAYS') {
+	//	input message: 'Do you want to deploy?', submitter: 'ops'
+	//}
 	
 	stage name:'deploy', concurrency: 1{ 
 				bat "mvn cargo:deploy" 
