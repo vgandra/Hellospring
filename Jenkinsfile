@@ -23,6 +23,6 @@ node {
 	} 
 	stage('deploy') {
 		unstash 'source'
-		sh 'cp /target/*.jar /opt/deploy'
+		sh 'cp target/*.jar /opt/deploy'
 	}
 }
