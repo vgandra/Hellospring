@@ -1,5 +1,5 @@
 node { 
-	checkout scm
+	checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'git-credentials', url: 'https://github.com/shyamnarayan2001/HelloSpringWorld.git']]])
 	env.PATH ="${tool 'Maven3'}/bin:${env.PATH}"
 	stash excludes: 'target/', includes: '**', name: 'source'
 	stage('validate') {
