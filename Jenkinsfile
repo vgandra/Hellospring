@@ -17,7 +17,6 @@ node {
 	stage('test') {
 		parallel 'integration': {
 			bat 'mvn clean verify'
-			junit ''
 		}, 'quality': {
 			//bat 'mvn sonar:sonar'
 			} 
@@ -27,3 +26,8 @@ node {
 		bat 'copy .\\target\\*.jar d:\\deploy'
 	}
 }
+post {
+        always {
+            junit 'build/reports/**/*.xml'
+        }
+    }
