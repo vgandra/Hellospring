@@ -14,11 +14,12 @@ node {
 		 bat 'mvn clean package -DskipTests'
 	}
 	stage('install') {
-		bat 'mvn clean install
+		bat 'mvn clean install'
 	} 
 	stage('test') {
 		parallel 'integration': {
 			bat 'mvn clean verify'
+			junit '**/target/*.xml'
 		}, 'quality': {
 			//bat 'mvn sonar:sonar'
 			} 
