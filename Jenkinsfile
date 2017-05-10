@@ -17,6 +17,7 @@ node {
 	stage('test') {
 		parallel 'integration': {
 			bat 'mvn clean verify'
+			junit '**/target/*.xml'
 		}, 'quality': {
 			//bat 'mvn sonar:sonar'
 			} 
