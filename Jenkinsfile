@@ -1,3 +1,4 @@
+def err = null
 try {
 node { 
 	checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'git-credentials', url: 'https://github.com/shyamnarayan2001/HelloSpringWorld.git']]])
@@ -29,8 +30,8 @@ node {
 	} 
 }
 } // try end
-catch (exc) {
-/*
+catch (caughtError) {
+
  err = caughtError
  currentBuild.result = "FAILURE"
  String recipient = 'jjeyashree@gmail.com'
@@ -39,7 +40,7 @@ catch (exc) {
            to: recipient,
       replyTo: recipient,
  from: 'noreply@ci.jenkins.io'
-*/
+
 } finally {
   
  (currentBuild.result != "ABORTED") && node("master") {
