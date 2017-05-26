@@ -22,7 +22,7 @@ pipeline {
     }
     stage('email') {
       steps {
-        emailext(subject: 'hello', body: 'hello', attachLog: true, compressLog: true, to: 'sgandra@altimetrik.com')
+        emailext(subject: 'hello', body: 'hello', attachLog: true, compressLog: true, to: 'gandrasatya21@gmail.com')
       }
     }
   }
