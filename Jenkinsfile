@@ -20,7 +20,7 @@ pipeline {
         )
       }
     }
-    stage('') {
+    stage('email') {
       steps {
         emailext(subject: 'hello', body: 'hello', attachLog: true, compressLog: true, to: 'sgandra@altimetrik.com')
       }
