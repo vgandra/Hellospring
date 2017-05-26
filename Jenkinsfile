@@ -8,7 +8,7 @@ pipeline {
     }
     stage('deploy') {
       steps {
-        sh 'cp target/*.jar /opt/deploy'
+        sh 'scp target/*.jar pivotal@192.168.94.119:/home/pivotal/'
       }
     }
   }
